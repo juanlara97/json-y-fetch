@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        #direccion, #telefono{
+            font-style: italic;
+            color: darkblue;
+        }
+
+        #titulo1{
+            text-align: center;
+        }
+
+        #contenedor{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        table , th, td {
+            border: solid;
+            border-collapse: collapse ;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="nombre"></h1>
+    <h2 id="titulo1">Vehiculos en venta</h2>
+    <div id="contenedor">
+        <table id="tabla1">
+        </table>
+    </div>
+    <h2 id="titulo1">Vehiculos en alquiler</h2>
+    <div id="contenedor">
+        <table id="tabla2">
+        </table>
+    </div>
+    
+    <p style="font-weight: bold;">Encuentranos en: <p id="direccion" ></p></p>
+    <p style="font-weight: bold";>Telefono:<p id="telefono"></p></p>
+    <script>
+        fetch('concesionario.json')
+        .then( response => response.json())
+        .then( concesionario => {
+            document.getElementById("nombre").innerHTML = concesionario.nombre; 
+            document.getElementById("direccion").innerHTML = "Calle " + concesionario.direccion.calle + ", número " + concesionario.direccion.numero + ", " + concesionario.direccion.poblacion
+            document.getElementById("tabla1").innerHTML = "<tr>" + "<th>" + "marca" + "</th>" + "<th>" + "modelo" + "</th>" + "<th>" + "año" + "</th>" + "<th>" + "precio" + "</th>" + "</tr>" + 
+            
+            "<tr>" + "<td>" + concesionario.coches.venta.m6.marca + "</td>" + "<td>" + concesionario.coches.venta.m6.modelo + "</td>" + "<td>" + concesionario.coches.venta.m6.año + "</td>" + "<td>" + concesionario.coches.venta.m6.precio + "</td>" + "</tr>" +
+            
+            "<tr>" + "<td>" + concesionario.coches.venta.p206.marca + "</td>" + "<td>" + concesionario.coches.venta.p206.modelo + "</td>" + "<td>" + concesionario.coches.venta.p206.año + "</td>" + "<td>" + concesionario.coches.venta.p206.precio + "</td>" + "</tr>" +
+            
+            "<tr>" + "<td>" + concesionario.coches.venta.tc.marca + "</td>" + "<td>" + concesionario.coches.venta.tc.modelo + "</td>" + "<td>" + concesionario.coches.venta.tc.año + "</td>" + "<td>" + concesionario.coches.venta.tc.precio + "</td>" + "</tr>"; 
+
+
+            function boleanos(boo){
+                if(boo == true){
+                    return "sí"
+                }else{
+                    return "no"
+                }
+            }
+
+
+            document.getElementById("tabla2").innerHTML = "<tr>" + "<th>" + "marca" + "</th>" + "<th>" + "modelo" + "</th>" + "<th>" + "precio" + "</th>" + "<th>" + "disponible" + "</th>" + "</tr>" + 
+            
+            "<tr>" + "<td>" + concesionario.coches.alquiler.sura.marca + "</td>" + "<td>" + concesionario.coches.alquiler.sura.modelo + "</td>" + "<td>" + concesionario.coches.alquiler.sura.precio + "</td>" + "<td>" + boleanos(concesionario.coches.alquiler.sura.disponible) + "</td>" + "</tr>" +
+            
+            "<tr>" + "<td>" + concesionario.coches.alquiler.nima.marca + "</td>" + "<td>" + concesionario.coches.alquiler.nima.modelo + "</td>" + "<td>" + concesionario.coches.alquiler.nima.precio + "</td>" + "<td>" + boleanos(concesionario.coches.alquiler.nima.disponible)  + "</td>" + "</tr>" +
+            
+            "<tr>" + "<td>" + concesionario.coches.alquiler.tp.marca + "</td>" + "<td>" + concesionario.coches.alquiler.tp.modelo + "</td>" + "<td>" + concesionario.coches.alquiler.tp.precio + "</td>" + "<td>" + boleanos(concesionario.coches.alquiler.tp.disponible)  + "</td>" + "</tr>"; 
+
+            document.getElementById("telefono").innerHTML = concesionario.telefono
+        });
+    </script>
+</body>
+</html>

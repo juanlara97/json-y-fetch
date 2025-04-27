@@ -1,0 +1,51 @@
+{
+    "nombre": "ManchaCars",
+    "direccion": {
+        "calle": "Norte",
+        "numero": 2,
+        "poblacion": "Alcazar de san juan"
+    },
+    "telefono" : "+34 665452090",
+    "coches" : {
+        "venta" : {
+            "m6" : {
+                "marca" : "mazda",
+                "modelo" : "6",
+                "año" : "2015",
+                "precio" : "$12.000"
+            },
+            "p206" : {
+                "marca" : "peugeot",
+                "modelo" : "206",
+                "año" : "2008",
+                "precio" : "$7.000"
+            },
+            "tc" : {
+                "marca" : "toyota",
+                "modelo" : "corolla",
+                "año" : "2020",
+                "precio" : "$15.000"
+            }
+        },
+        "alquiler" : {
+            "sura" : {
+                "marca" : "susuki",
+                "modelo" : "vitara",
+                "precio" : "$50",
+                "disponible" : true
+            },
+            "nima" : {
+                "marca" : "nissan",
+                "modelo" : "march",
+                "precio" : "$40",
+                "disponible" : false
+            },
+            "tp" : {
+                "marca" : "toyota",
+                "modelo" : "prado",
+                "precio" : "$100",
+                "disponible" : true
+            }
+        }
+    }
+}
